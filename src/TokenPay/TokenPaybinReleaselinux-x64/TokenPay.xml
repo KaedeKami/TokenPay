@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TokenPay</name>
+    </assembly>
+    <members>
+        <member name="M:TokenPay.BgServices.OrderCheckEVMERC20Service.ERC20(FreeSql.IBaseRepository{TokenPay.Domains.TokenOrders},System.String,TokenPay.Models.EthModel.EVMChain,TokenPay.Models.EthModel.EVMErc20)">
+            <summary>
+            查询交易记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.CreateOrder(TokenPay.Models.CreateOrderViewModel)">
+            <summary>
+            创建订单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.GetQrCode(System.Guid,System.Int32)">
+            <summary>
+            获取订单对应的二维码
+            尺寸 300x300
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.GetUseTokenDynamicAdress(TokenPay.Models.CreateOrderViewModel)">
+            <summary>
+            动态地址
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.CreateAddress(System.String,System.String)">
+            <summary>
+            根据唯一Id获取一个地址
+            </summary>
+            <exception cref="T:TokenPay.Models.TokenPayException"></exception>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.GetUseTokenStaticAdress(TokenPay.Models.CreateOrderViewModel)">
+            <summary>
+            静态地址
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+            <exception cref="T:TokenPay.Models.TokenPayException"></exception>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.CreateQrCode(System.String,System.Int32)">
+            <summary>
+            创建二维码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Controllers.HomeController.CancelAsync(System.Guid)">
+            <summary>
+            Cancel the payment of an order.
+            </summary>
+            <param name="id">The id of the order.</param>
+            <returns>The result of the cancellation.</returns>
+        </member>
+        <member name="T:TokenPay.Domains.TokenOrders">
+            <summary>
+            支付订单
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.Id">
+            <summary>
+            交易订单号
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.OutOrderId">
+            <summary>
+            外部订单号
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.OrderUserKey">
+            <summary>
+            支付用户标识
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.BlockTransactionId">
+            <summary>
+            区块唯一编号
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.PayTime">
+            <summary>
+            支付时间
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.FromAddress">
+            <summary>
+            来源地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.ActualAmount">
+            <summary>
+            订单实际需要支付的法币金额，保留2位小数
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.Currency">
+            <summary>
+            区块链币种
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.Amount">
+            <summary>
+            订单金额，保留4位小数
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.ToAddress">
+            <summary>
+            钱包地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.Status">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.PassThroughInfo">
+            <summary>
+            在回调通知或订单信息中原样返回
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.NotifyUrl">
+            <summary>
+            异步通知Url
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.RedirectUrl">
+            <summary>
+            同步跳转Url
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.CallbackNum">
+            <summary>
+            异步回调次数
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.CallbackConfirm">
+            <summary>
+            异步回调确认状态
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenOrders.LastNotifyTime">
+            <summary>
+            最后通知时间
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenRate.Currency">
+            <summary>
+            币种
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenRate.FiatCurrency">
+            <summary>
+            法币
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenRate.Rate">
+            <summary>
+            汇率
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.TokenRate.LastUpdateTime">
+            <summary>
+            最后更新时间
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.Tokens.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.Tokens.Key">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.Tokens.Currency">
+            <summary>
+            币种
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.Tokens.Value">
+            <summary>
+            本币余额
+            </summary>
+        </member>
+        <member name="P:TokenPay.Domains.Tokens.USDT">
+            <summary>
+            USDT代币余额
+            </summary>
+        </member>
+        <member name="M:TokenPay.Extensions.DecimalExtension.ToRound(System.Decimal,System.Int32)">
+            <summary>
+            四舍五入
+            </summary>
+            <param name="value"></param>
+            <param name="decimals">小数位数</param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.EnergyApi.OrderPrice(System.Int32,System.Int32,System.String)">
+            <summary>
+            价格估算
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.EnergyApi.OrderQuery(System.String)">
+            <summary>
+            查询订单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.EnergyApi.CreateOrder(TokenPay.Helper.CreateOrderModel)">
+            <summary>
+            下单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.PayAddress">
+            <summary>
+            支付地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.PayAmount">
+            <summary>
+            支付金额
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.ReceiveAddress">
+            <summary>
+            接收地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.RentDuration">
+            <summary>
+            时长
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.ResourceValue">
+            <summary>
+            资源数量
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.CreateOrderModel.RentTimeUnit">
+            <summary>
+            时间单位
+            </summary>
+        </member>
+        <member name="P:TokenPay.Helper.OrderData.SubOrder">
+            <summary>
+            子订单
+            </summary>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.GetUsdtAmountAsync(System.String)">
+            <summary>
+            获取USDT余额
+            </summary>
+            <param name="Address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.TransferTrxAsync(HDWallet.Tron.TronWallet,System.Decimal,System.String)">
+            <summary>
+            转TRX
+            </summary>
+            <param name="account"></param>
+            <param name="Id"></param>
+            <param name="value"></param>
+            <param name="ToAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.TransferUSDTAsync(HDWallet.Tron.TronWallet,System.Decimal,System.String)">
+            <summary>
+            转USDT
+            </summary>
+            <param name="account"></param>
+            <param name="Id"></param>
+            <param name="value"></param>
+            <param name="ToAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.GetAccountResourceAsync(System.String)">
+            <summary>
+            获取账户资源
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.GetAccountAsync(System.String)">
+            <summary>
+            获取账户信息
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.GetTRXAsync(System.String)">
+            <summary>
+            获取TRX余额
+            </summary>
+            <param name="address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TokenPay.Helper.QueryTronAction.GetTransferTrxSignedTxnToJobjectAsync(System.String,System.String,System.Decimal,System.String)">
+            <summary>
+            获取转账带签名的原始数据
+            </summary>
+            <param name="OwnerAddress"></param>
+            <param name="privateKey"></param>
+            <param name="value"></param>
+            <param name="ToAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="F:TokenPay.Models.AbiFunction.FillOrderStraight">
+            <summary>
+            Token Goodies 批量转账
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.Value.CallValueRaw">
+            <summary>
+            TRX闪兑USDT才有
+            </summary>
+        </member>
+        <member name="M:TokenPay.Models.Value.DecodeFunctionInput``1">
+            <summary>
+            提取ABIdata
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type">address uint256 等</param>
+            <param name="name">字段名</param>
+            <returns></returns>
+        </member>
+        <member name="P:TokenPay.Models.Value.Balance">
+            <summary>
+            代理balance数量的TRX所对应的资源给目标地址, 单位为sun
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.Value.Lock">
+            <summary>
+            true表示为该资源代理操作设置三天的锁定期
+            即资源代理给目标地址后的三天内不可以取消对其的资源代理
+            如果锁定期内，再次代理资源给同一目标地址，则锁定期将重新设置为3天。
+            false表示本次资源代理没有锁定期，可随时取消对目标地址的资源代理。
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.OutOrderId">
+            <summary>
+            外部订单号
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.OrderUserKey">
+            <summary>
+            支付用户标识
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.ActualAmount">
+            <summary>
+            订单实际需要支付的法币金额
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.Currency">
+            <summary>
+            币种
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.PassThroughInfo">
+            <summary>
+            在回调通知或订单信息中原样返回
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.NotifyUrl">
+            <summary>
+            异步通知Url
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.RedirectUrl">
+            <summary>
+            同步跳转Url
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.CreateOrderViewModel.Signature">
+            <summary>
+            参数签名
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.Enable">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ChainName">
+            <summary>
+            链名
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ChainNameEN">
+            <summary>
+            链名-英文
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.BaseCoin">
+            <summary>
+            基本币名称
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.Confirmations">
+            <summary>
+            最少确认数
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.Decimals">
+            <summary>
+            基本币精确度
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ScanHost">
+            <summary>
+            区块浏览器Host
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ApiHost">
+            <summary>
+            Api Host
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ApiKey">
+            <summary>
+            Api Key
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ERC20Name">
+            <summary>
+            ERC20Name
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMChain.ERC20">
+            <summary>
+            代币
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMErc20.Name">
+            <summary>
+            币种名称
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.EthModel.EVMErc20.ContractAddress">
+            <summary>
+            合约地址
+            </summary>
+        </member>
+        <member name="T:TokenPay.Models.OrderCancellationModel">
+            <summary>
+            The model of the order cancellation.
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.OrderCancellationModel.OrderId">
+            <summary>
+            The id of the order.
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.OrderCancellationModel.OrderCode">
+            <summary>
+            The code of the order. Here is an alias for `外部订单号`.
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.OrderCancellationModel.ReturnUrl">
+            <summary>
+            The URL set by the API caller.
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Txid">
+            <summary>
+            交易hash
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Time">
+            <summary>
+            交易时间
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Confirmations">
+            <summary>
+            交易首次通知时的确认数
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Value">
+            <summary>
+            余额变化数量
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Coin">
+            <summary>
+            交易发生的区块链
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.Height">
+            <summary>
+            交易被打包的区块高度
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.TokenAddress">
+            <summary>
+            token的地址
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.TokenSymbol">
+            <summary>
+            token的符号单位
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TokenModel.TokenValue">
+            <summary>
+            token的数量变化
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TronModel.TronTransaction.Amount">
+            <summary>
+            实际USDT金额，需要计算精度
+            </summary>
+        </member>
+        <member name="P:TokenPay.Models.TronModel.Value.RealAmount">
+            <summary>
+            真实金额
+            </summary>
+        </member>
+    </members>
+</doc>
